@@ -1,7 +1,6 @@
 
 ## Quick start
 
-- `cd root`
 - `npm install && npm run dev`
 - Open another terminal, then `cd client`
 - `npm install && npm start`
