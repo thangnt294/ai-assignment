@@ -80,6 +80,18 @@ const UserManagement = () => {
   )
 
   const tableRow = (id, name, email, type, weight, index) => {
+    let progress = null
+    if (weight >= 0.8) {
+      progress = classes.bgGradientPrimary
+    } else if (weight >= 0.6 && weight < 0.8) {
+      progress = classes.bgGradientSuccess
+    } else if (weight >= 0.4 && weight < 0.6) {
+      progress = classes.bgGradientInfo
+    } else if (weight >= 0.2 && weight < 0.4) {
+      progress = classes.bgGradientWarning
+    } else {
+      progress = classes.bgGradientError
+    }
     let ariaControls = ''
     let anchorEl = {}
     switch(index) {
@@ -146,7 +158,7 @@ const UserManagement = () => {
                 value={weight * 100}
                 classes={{
                   root: classes.linearProgressRoot,
-                  bar: classes.bgGradientError,
+                  bar: progress,
                 }}
               />
             </Box>

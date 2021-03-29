@@ -52,7 +52,7 @@ const Header = () => {
                 <CardStats
                   subtitle='Users'
                   title={statistics?.userCount?.toString() || '0'}
-                  icon={InsertChartOutlined}
+                  icon={GroupAdd}
                   color='bgError'
                   footer={
                     <>
@@ -79,7 +79,7 @@ const Header = () => {
                 <CardStats
                   subtitle='Courses'
                   title={statistics?.courseCount?.toString() || '0'}
-                  icon={PieChart}
+                  icon={InsertChartOutlined}
                   color='bgWarning'
                   footer={
                     <>
@@ -106,7 +106,7 @@ const Header = () => {
                 <CardStats
                   subtitle='Open Surveys'
                   title={statistics?.openSurveyCount?.toString() || '0'}
-                  icon={GroupAdd}
+                  icon={PieChart}
                   color='bgWarningLight'
                   footer={
                     <>
