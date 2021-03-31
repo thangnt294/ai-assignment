@@ -33,7 +33,7 @@ const updateUserWeight = async (ratingList) => {
       diff += Math.abs(G[i] - results[i])
     }
     (diff /= 50).toFixed(2)
-    if (diff <= 0.1) {
+    if (diff <= 0.15) {
       if (weight + diff > 1) {
         weight = 1
       } else {
@@ -53,7 +53,7 @@ const updateUserWeight = async (ratingList) => {
     }
     userWeightAndId.push({
       userId: userRating.userId.toString(),
-      weight,
+      weight: weight.toFixed(2),
     })
   })
 
@@ -144,7 +144,7 @@ const calculateRating = (ratingList, userList) => {
     }
   })
 
-  const finalScore = (G.reduce((acc, val) => acc + val, 0)) * 2 / ratingList.length
+  const finalScore = ((G.reduce((acc, val) => acc + val, 0)) * 2 / ratingList.length).toFixed(2)
   let finalRating = null
   switch (maxValue.index) {
     case 0:

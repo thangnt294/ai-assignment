@@ -81,13 +81,6 @@ const Tables = () => {
     </div>
   )
 
-  const myStyle = (isOpen) => {
-    if (isOpen) {
-      return null
-    }
-    return { backgroundColor: 'gray' }
-  }
-
   const tableRow = (_id, courseName, isOpen, score, rating, index) => {
     let progress = null
     switch(rating) {
@@ -201,9 +194,7 @@ const Tables = () => {
             aria-haspopup='true'
             onClick={handleClick}
             size='small'
-            style={myStyle(isOpen)}
             component={Button}
-            disabled={!isOpen}
             width='2rem!important'
             height='2rem!important'
             minWidth='2rem!important'
@@ -220,14 +211,13 @@ const Tables = () => {
             />
           </Box>
           <Menu
-            // id='simple-menu-1'
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={() => handleCloseSurvey(_id)}>Close Survey</MenuItem>
-            <MenuItem onClick={() => handleEditSurvey({ _id, courseName, isOpen, score, rating })}>Edit</MenuItem>
+            <MenuItem style={{display: isOpen ? 'normal': 'none'}} onClick={() => handleCloseSurvey(_id)}>Close Survey</MenuItem>
+            <MenuItem style={{display: isOpen ? 'normal': 'none'}} onClick={() => handleEditSurvey({ _id, courseName, isOpen, score, rating })}>Edit</MenuItem>
             <MenuItem onClick={() => handleDeleteSurvey(_id)}>Delete</MenuItem>
           </Menu>
         </TableCell>
