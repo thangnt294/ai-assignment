@@ -35,24 +35,24 @@ const updateUserWeight = async (ratingList) => {
       diff += Math.abs(G[i] - results[i])
     }
     (diff /= 50).toFixed(2)
-    if (diff <= 0.2) {
+    if (diff <= 0.15) {
       if (weight + diff > 1) {
         weight = 1
       } else {
         weight += diff
       }
     } else {
-      if (diff <= 0.25) {
+      if (diff <= 0.2) {
         if (weight - diff < 0) {
           weight = 0
         } else {
           weight -= diff
         }
       } else {
-        if (weight - 0.25 < 0) {
+        if (weight - 0.2 < 0) {
           weight = 0
         } else {
-          weight -= 0.25
+          weight -= 0.2
         }
       }
 
