@@ -17,7 +17,7 @@ const updateUserWeight = async (ratingList) => {
 
   const M = buildM(ratingList, users)
 
-  const G = buildG(M, M.length)
+  const G = buildG(M)
 
   const userWeightById = {}
   users.forEach(user => {
@@ -85,20 +85,20 @@ const buildM = (ratingList, users) => {
   return M
 }
 
-const buildG = (M) => {
+const buildG = (M, weights) => {
   return M.map(itemM => {
-    return itemM.reduce((acc, val) => acc + val.weight * val.rating, 0)
+    return (itemM.reduce((acc, val) => acc + val.weight * val.rating, 0)) / weights
   })
 }
 
-const buildE = (G, count) => {
+const buildE = (G) => {
   return G.map((value) => {
     return [
-      fuzzyFunctions(value / count, 'E'),
-      fuzzyFunctions(value / count, 'G'),
-      fuzzyFunctions(value / count, 'S'),
-      fuzzyFunctions(value / count, 'M'),
-      fuzzyFunctions(value / count, 'P'),
+      fuzzyFunctions(value, 'E'),
+      fuzzyFunctions(value, 'G'),
+      fuzzyFunctions(value, 'S'),
+      fuzzyFunctions(value, 'M'),
+      fuzzyFunctions(value, 'P'),
     ]
   })
 }
@@ -122,9 +122,11 @@ const calculateRating = (ratingList, userList) => {
 
   const M = buildM(ratingList, userList)
 
-  const G = buildG(M)
+  const userWeights = userList.reduce((acc, user) => acc + user.weight, 0)
 
-  const E = buildE(G, ratingList.length)
+  const G = buildG(M, userWeights)
+
+  const E = buildE(G)
 
   const R = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
 
