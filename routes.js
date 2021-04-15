@@ -213,24 +213,6 @@ router.post('/surveys/:id',
           updatedDate: new Date()
         })
       await updateUserWeight(surveyRatings)
-      // const userIds = surveyRatings.map(rating => rating.userId.toString());
-      // const allSurvey = await Survey.find({
-      //   isOpen: true,
-      //   'results.userId': {
-      //     $in: userIds
-      //   },
-      //   _id: {$not: req.params.id}
-      // }).lean()
-      // const allUsers = await User.find({_id: {$in: userIds}, deleted: false}).lean()
-      // const updateSurveyPromise = allSurvey.map(survey => {
-      //   const newResult = calculateRating(survey.results, allUsers)
-      //   return Survey.findByIdAndUpdate(survey._id, {
-      //     score: newResult.score,
-      //     rating: newResult.rating,
-      //     updatedDate: new Date()
-      //   })
-      // })
-      // await Promise.all(updateSurveyPromise)
       res.send({
         code: 200,
         data: null,

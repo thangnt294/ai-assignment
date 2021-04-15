@@ -218,7 +218,7 @@ const Tables = () => {
           >
             <MenuItem style={{display: isOpen ? 'normal': 'none'}} onClick={() => handleCloseSurvey(_id)}>Close Survey</MenuItem>
             <MenuItem style={{display: isOpen ? 'normal': 'none'}} onClick={() => handleEditSurvey({ _id, courseName, isOpen, score, rating })}>Edit</MenuItem>
-            <MenuItem onClick={() => handleDeleteSurvey(_id)}>Delete</MenuItem>
+            <MenuItem onClick={() => handleDeleteSurvey(_id)}>Delete Survey</MenuItem>
           </Menu>
         </TableCell>
       </TableRow>
