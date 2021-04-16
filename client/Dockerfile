@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM bayesimpact/react-base
 RUN npm install -g serve
 RUN npm install -g yarn && \
 yarn install \
