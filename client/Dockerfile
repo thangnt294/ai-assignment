@@ -1,5 +1,5 @@
 FROM node:12-alpine
-ENV DIR=/bar
+ENV DIR=/client
 RUN npm install -gf serve
 RUN npm install -gf yarn
 WORKDIR ${DIR}
